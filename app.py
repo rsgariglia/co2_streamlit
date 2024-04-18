@@ -12,6 +12,13 @@ st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_st
 credentials = st.secrets["gcp_service_account"]
 project_id = credentials["project_id"]
 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 #specifying sidebar layout
 show_pages(
