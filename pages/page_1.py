@@ -11,7 +11,7 @@ project_id = credentials["project_id"]
 
 
 # Perform query using pandas-gbq
-@st.cache_data(ttl=86400, show_spinner=False)
+@st.cache_resource(ttl=86400, show_spinner=False)
 def run_query_forecast():
     # Define the query
     query = """
@@ -67,7 +67,7 @@ def calculate_savings(selected_material, waste_reduction_percentage):
 
 
 # Perform query using pandas-gbq
-@st.cache_data(ttl=86400, show_spinner=False)
+@st.cache_resource(ttl=86400, show_spinner=False)
 def run_query():
     # Define the query
     query = """
@@ -81,7 +81,7 @@ def run_query():
 material_emissions_data = run_query()
 
 # Perform query using pandas-gbq
-@st.cache_data(ttl=86400, show_spinner=False)
+@st.cache_resource(ttl=86400, show_spinner=False)
 def run_query_forecast_data():
     # Define the query
     query = """
