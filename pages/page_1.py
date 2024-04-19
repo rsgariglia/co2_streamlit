@@ -11,7 +11,7 @@ project_id = credentials["project_id"]
 
 
 # Perform query using pandas-gbq
-@st.cache_resource(ttl=86400, show_spinner=False)
+#@st.cache_resource(ttl=86400, show_spinner=False)
 def run_query_forecast():
     # Define the query
     query = """
@@ -19,7 +19,7 @@ def run_query_forecast():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.savings_forecast_cost`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id, credentials=credentials)
+    return pandas_gbq.read_gbq(query, project_id=project_id)
 
 # Read data using the cached function
 savings_forecast = run_query_forecast()
@@ -67,7 +67,7 @@ def calculate_savings(selected_material, waste_reduction_percentage):
 
 
 # Perform query using pandas-gbq
-@st.cache_resource(ttl=86400, show_spinner=False)
+#@st.cache_resource(ttl=86400, show_spinner=False)
 def run_query():
     # Define the query
     query = """
@@ -75,13 +75,13 @@ def run_query():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.total_emissions_to_date`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id, credentials=credentials)
+    return pandas_gbq.read_gbq(query, project_id=project_id)
 
 # Read data using the cached function
 material_emissions_data = run_query()
 
 # Perform query using pandas-gbq
-@st.cache_resource(ttl=86400, show_spinner=False)
+#@st.cache_resource(ttl=86400, show_spinner=False)
 def run_query_forecast_data():
     # Define the query
     query = """
@@ -89,7 +89,7 @@ def run_query_forecast_data():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.forecasts`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id, credentials=credentials)
+    return pandas_gbq.read_gbq(query, project_id=project_id)
 
 # Read data using the cached function
 forecasts_data = run_query_forecast_data()

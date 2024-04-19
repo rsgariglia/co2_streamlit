@@ -39,7 +39,7 @@ def run_query():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.emissions_generated`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id, credentials=credentials)
+    return pandas_gbq.read_gbq(query, project_id=project_id)
 
 # Read data using the cached function
 emissions_data = run_query()
