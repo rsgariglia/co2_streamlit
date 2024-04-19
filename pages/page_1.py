@@ -2,16 +2,30 @@ import streamlit as st
 import pandas as pd
 import altair as alt
 import pandas_gbq
+from google.oauth2 import service_account
+from google.cloud import bigquery
+
 
 st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_state="expanded")
 
 # Define BigQuery credentials
-credentials = st.secrets["gcp_service_account"]
-project_id = credentials["project_id"]
+#credentials = st.secrets["gcp_service_account"]
+#project_id = credentials["project_id"]
+
+
+# Define BigQuery credentials
+#credentials = st.secrets["gcp_service_account"]
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+
+client = bigquery.Client(credentials=credentials)
+#project_id = credentials["project_id"]
+project_id = st.secrets["gcp_service_account"]["project_id"]
 
 
 # Perform query using pandas-gbq
-#@st.cache_resource(ttl=86400, show_spinner=False)
+@st.cache_data(ttl=86400, show_spinner=False)
 def run_query_forecast():
     # Define the query
     query = """
@@ -19,7 +33,7 @@ def run_query_forecast():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.savings_forecast_cost`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id)
+    return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
 
 # Read data using the cached function
 savings_forecast = run_query_forecast()
@@ -67,7 +81,7 @@ def calculate_savings(selected_material, waste_reduction_percentage):
 
 
 # Perform query using pandas-gbq
-#@st.cache_resource(ttl=86400, show_spinner=False)
+@st.cache_data(ttl=86400, show_spinner=False)
 def run_query():
     # Define the query
     query = """
@@ -75,13 +89,13 @@ def run_query():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.total_emissions_to_date`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id)
+    return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
 
 # Read data using the cached function
 material_emissions_data = run_query()
 
 # Perform query using pandas-gbq
-#@st.cache_resource(ttl=86400, show_spinner=False)
+@st.cache_data(ttl=86400, show_spinner=False)
 def run_query_forecast_data():
     # Define the query
     query = """
@@ -89,7 +103,7 @@ def run_query_forecast_data():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.forecasts`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id)
+    return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
 
 # Read data using the cached function
 forecasts_data = run_query_forecast_data()

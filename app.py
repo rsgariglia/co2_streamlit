@@ -3,14 +3,22 @@ import pandas as pd
 import altair as alt
 from st_pages import Page, show_pages
 import pandas_gbq
+from google.oauth2 import service_account
+from google.cloud import bigquery
 
 
 # Set Streamlit theme to light
 st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_state="expanded")
 
 # Define BigQuery credentials
-credentials = st.secrets["gcp_service_account"]
-project_id = credentials["project_id"]
+#credentials = st.secrets["gcp_service_account"]
+credentials = service_account.Credentials.from_service_account_info(
+    st.secrets["gcp_service_account"]
+)
+
+client = bigquery.Client(credentials=credentials)
+#project_id = credentials["project_id"]
+project_id = st.secrets["gcp_service_account"]["project_id"]
 
 hide_streamlit_style = """
             <style>
@@ -31,7 +39,7 @@ show_pages(
 )
 
 # Perform query using pandas-gbq
-@st.cache_resource(ttl=86400, show_spinner=False)
+@st.cache_data(ttl=86400, show_spinner=False)
 def run_query():
     # Define the query
     query = """
@@ -39,7 +47,7 @@ def run_query():
     FROM `analytics-data-platform-395911.streamlit_app_IFAT.emissions_generated`
     """
     # Read data directly into DataFrame
-    return pandas_gbq.read_gbq(query, project_id=project_id)
+    return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
 
 # Read data using the cached function
 emissions_data = run_query()
