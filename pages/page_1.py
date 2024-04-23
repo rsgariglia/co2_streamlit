@@ -121,8 +121,10 @@ def page_calculate_emission_potential():
 
     st.write(" ")
 
-    default_reduction_percentage = 0
-    waste_reduction_percentage = st.slider("Pick a % of waste you want to reduce", 0, 100, (default_reduction_percentage, default_reduction_percentage))
+    #default_reduction_percentage = 0
+    #waste_reduction_percentage = st.slider("Pick a % of waste you want to reduce", 0, 100, (default_reduction_percentage, default_reduction_percentage))
+    waste_reduction_percentage = st.slider("Pick a % of waste you want to reduce", min_value=10, max_value=100, format="%d%%", value=15)
+
 
     st.write(" ")
 
@@ -164,7 +166,8 @@ def page_calculate_emission_potential():
         ).interactive()
 
         # Calculate the adjusted forecast
-        reduction_percentage = waste_reduction_percentage[1] / 100
+        #reduction_percentage = waste_reduction_percentage[1] / 100
+        reduction_percentage = waste_reduction_percentage / 100
         adjusted_forecast_data = filtered_forecast_data.copy()
         adjusted_forecast_data['forecast'] *= (1 - reduction_percentage)
 
@@ -178,8 +181,8 @@ def page_calculate_emission_potential():
 
         # Display both original and adjusted forecasts on the same chart
         combined_chart = (original_forecast_chart + adjusted_forecast_chart).properties(
-            width=400,  # Adjust width
-            height=300,  # Adjust height
+            width=400,  #
+            height=300,  
             title="Emissions Forecast"
         )
 
@@ -197,13 +200,13 @@ def page_calculate_emission_potential():
         
         st.altair_chart(emissions_chart | combined_chart, use_container_width=True)
         
-        # Add a space between the charts and the average CO2 savings box
+        
         st.write(" ")
         
-        # Create two columns layout for the boxes
+        
         col1, col2 = st.columns(2)
 
-        # Display the average CO2 savings box in the first column
+        
         with col1:
             st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
                         "<h3>Projected monthly CO2 kg savings</h3>"
@@ -211,7 +214,7 @@ def page_calculate_emission_potential():
                         f"<p>{avg_co2_savings}</p>"
                         "</div>", unsafe_allow_html=True)
 
-        # Display the cost savings box in the second column
+       
         with col2:
             st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
                         "<h3>Cost savings</h3>"
@@ -221,7 +224,7 @@ def page_calculate_emission_potential():
         
         st.write(" ")
 
-# Display the content of Page 1 on the Home page
+
 page_calculate_emission_potential()
 
 if st.button("Next", key="next_button"):
