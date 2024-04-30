@@ -12,16 +12,16 @@ st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_st
 #st_lottie(circular, width=200, height=200)
 
 with open('Illustration-Sorting-optimised.json', 'r') as f:
-    circular = json.load(f)
-st_lottie(circular, width=200, height=200)
+    sort = json.load(f)
+st_lottie(sort, width=200, height=200)
 
-#with open('Illustration-ReducePickups.json', 'r') as f:
-    #circular = json.load(f)
-#st_lottie(circular, width=200, height=200)
+with open('Illustration-ReducePickups-optimised.json', 'r') as f:
+    pickup = json.load(f)
+st_lottie(pickup, width=200, height=200)
 
 with open('Illustration-Transport-emissions-optimised.json', 'r') as f:
-    circular = json.load(f)
-st_lottie(circular, width=200, height=200)
+    transport = json.load(f)
+st_lottie(transport, width=200, height=200)
 
 def page_identify_ways_to_reduce_emissions():
     st.title("Identify Ways to Reduce Emissions")
