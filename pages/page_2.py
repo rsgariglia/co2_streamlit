@@ -19,9 +19,9 @@ st_lottie(circular, width=200, height=200)
     #circular = json.load(f)
 #st_lottie(circular, width=200, height=200)
 
-#with open('Illustration-Transport-emissions.json', 'r') as f:
-    #circular = json.load(f)
-#st_lottie(circular, width=200, height=200)
+with open('Illustration-Transport-emissions-optimised.json', 'r') as f:
+    circular = json.load(f)
+st_lottie(circular, width=200, height=200)
 
 def page_identify_ways_to_reduce_emissions():
     st.title("Identify Ways to Reduce Emissions")
