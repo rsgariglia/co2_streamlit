@@ -65,7 +65,8 @@ def page_your_estimated_emissions():
     # Plot bar chart of emissions generated using Altair
     chart = alt.Chart(emissions_data_first_7).mark_bar().encode(
         x=alt.X('material:N', sort=None, axis=alt.Axis(labelAngle=45)),  # Disabling sorting and tilting labels
-        y='emissions_generated:Q'  # Quantitative field
+        y='emissions_generated:Q',
+        color=alt.value('#5D46EB')
     ).properties(
         width=600,
         height=300  # Adjust height

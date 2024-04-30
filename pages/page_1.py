@@ -151,7 +151,7 @@ def page_calculate_emission_potential():
         emissions_chart = alt.Chart(filtered_data).mark_area().encode(
             x=alt.X('month_year:T', axis=alt.Axis(labelAngle=45, format='%m/%Y', title=None)),  # Tilt x-axis labels by 45 degrees and remove label
             y=alt.Y('total_emissions:Q', title='CO2 kgs emitted', scale=alt.Scale(domain=[min_emissions, max_emissions])),  # Add y-axis label
-            color=alt.value('blue'),
+            color=alt.value('#5D46EB'),
             tooltip=['month_year:T', 'total_emissions:Q']
         ).properties(
             width=400,  # Adjust width
@@ -227,7 +227,7 @@ def page_calculate_emission_potential():
         combined_chart = alt.Chart(combined_data).mark_area().encode(
             x=alt.X('month_year:T', axis=alt.Axis(labelAngle=45, format='%m/%Y', title=None)), 
             y = alt.Y('forecast:Q', title='CO2 kgs generated forecast', stack=None, scale=alt.Scale(domain=[min_emissions, max_emissions])),
-            color= alt.Color('type:N',scale=alt.Scale(domain=['Status Quo Forecast', 'Adjusted Forecast'], range=['blue', '#8cb5e1']), title='Scenarios'),
+            color= alt.Color('type:N',scale=alt.Scale(domain=['Status Quo Forecast', 'Adjusted Forecast'], range=['#5D46EB', '#E6E4F2']), title='Scenarios'),
             tooltip=['month_year:T', 'forecast:Q']
         ).properties(
             width = 400,
