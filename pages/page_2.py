@@ -1,6 +1,27 @@
 import streamlit as st
+import json
+from streamlit_lottie import st_lottie
+
 
 st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_state="expanded")
+
+# reading in lottie files
+
+with open('Illustration-Go-circular.json', 'r') as f:
+    circular = json.load(f)
+st_lottie(circular, width=200, height=200)
+
+with open('Illustration-Sorting.json', 'r') as f:
+    circular = json.load(f)
+st_lottie(circular, width=200, height=200)
+
+with open('Illustration-ReducePickups.json', 'r') as f:
+    circular = json.load(f)
+st_lottie(circular, width=200, height=200)
+
+with open('Illustration-Transport-emissions.json', 'r') as f:
+    circular = json.load(f)
+st_lottie(circular, width=200, height=200)
 
 def page_identify_ways_to_reduce_emissions():
     st.title("Identify Ways to Reduce Emissions")
@@ -54,11 +75,15 @@ def page_identify_ways_to_reduce_emissions():
                         "<p>through take-back by other Resourcify customers</p>"
                         "</div>", unsafe_allow_html=True)
         with col2:
-            st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
+            st.markdown(
+                        "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
                         "<h3>Box 2.1</h3>"
-                        "<p>Content for Box 2.3</p>"
-                        "</div>", unsafe_allow_html=True)
+                        "<p>The Lottie icon will have to go here</p>"
+                        "</div>",
+                        unsafe_allow_html=True)
+
         st.write("")
+       
 
     with tab2:
         st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px; display: flex; justify-content: space-between;'>"

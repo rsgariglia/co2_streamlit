@@ -38,6 +38,7 @@ show_pages(
     ]
 )
 
+
 # Perform query using pandas-gbq
 @st.cache_data(ttl=86400, show_spinner=False)
 def run_query():
