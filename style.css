@@ -1,0 +1,30 @@
+.st-emotion-cache-6qob1r {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: overlay;
+    background: #0D2F2F;
+    color: white;
+}
+
+.st-emotion-cache-pkbazv {
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: table-cell;
+}
+
+.st-emotion-cache-j7qwjs a span {
+    color: #fff !important;
+}
+
+.st-emotion-cache-j7qwjs a span::before {
+    color: #fff !important;
+}
+.st-emotion-cache-nziaof:active,
+.st-emotion-cache-nziaof:visited,
+.st-emotion-cache-nziaof:hover {
+    text-decoration: none;
+    font-weight: 600;
+}
