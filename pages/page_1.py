@@ -227,7 +227,7 @@ def page_calculate_emission_potential():
         combined_chart = alt.Chart(combined_data).mark_area().encode(
             x=alt.X('month_year:T', axis=alt.Axis(labelAngle=45, format='%m/%Y', title=None)), 
             y = alt.Y('forecast:Q', title='CO2 kgs generated forecast', stack=None, scale=alt.Scale(domain=[min_emissions, max_emissions])),
-            color= alt.Color('type:N',scale=alt.Scale(domain=['Status Quo Forecast', 'Adjusted Forecast'], range=['#5D46EB', '#E6E4F2']), title='Scenarios'),
+            color= alt.Color('type:N',scale=alt.Scale(domain=['Status Quo Forecast', 'Adjusted Forecast'], range=['#5D46EB', '#BDB3F9']), title='Scenarios'),
             tooltip=['month_year:T', 'forecast:Q']
         ).properties(
             width = 400,
