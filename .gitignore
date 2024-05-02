@@ -1,0 +1,4 @@
+.venv
+.streamlit/secrets.toml
+.idea
+.DS_STORE

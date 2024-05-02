@@ -4,6 +4,7 @@ from streamlit_lottie import st_lottie
 
 
 st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_state="expanded")
+st.markdown('<style> '+ open('./style.css').read()+' </style>', unsafe_allow_html=True)
 
 # reading in lottie files
 
@@ -32,35 +33,7 @@ def page_identify_ways_to_reduce_emissions():
     st.write("This page helps you identify ways to reduce emissions.")
 
     st.write("")
-    st.markdown("""
-    <style>
 
-        .stTabs [data-baseweb="tab-list"] {
-            gap: 4px;
-        }
-
-        .stTabs [data-baseweb="tab"] {
-            height: 50px;
-            white-space: pre-wrap;
-            background-color: #F0F2F6;
-            border-radius: 4px 4px 0px 0px;
-            gap: 1px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            padding-left: 5px;
-            padding-right: 5px;
-            border: solid;
-        }
-
-        .stTabs [aria-selected="true"] {
-            background-color: #d3d3d3;
-            border-color: blue;
-        }
-        .stTabs [data-baseweb="tab-highlight"] {
-            background-color: pink;
-        }
-
-    </style>""", unsafe_allow_html=True)
     tab1, tab2, tab3, tab4 = st.tabs(["Go Circular", "Optimise transport emissions", "Reduce pickups", "Avoid incineration through sorting"])
 
     with tab1:

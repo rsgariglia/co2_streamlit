@@ -1,0 +1,71 @@
+.st-emotion-cache-6qob1r {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    overflow: overlay;
+    background: #0D2F2F;
+    color: white;
+}
+
+.st-emotion-cache-pkbazv {
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: table-cell;
+}
+
+.st-emotion-cache-j7qwjs a span {
+    color: #fff !important;
+}
+
+.st-emotion-cache-j7qwjs a span::before {
+    color: #fff !important;
+}
+.st-emotion-cache-nziaof:active,
+.st-emotion-cache-nziaof:visited,
+.st-emotion-cache-nziaof:hover {
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.page-title-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-title-container .title {
+
+}
+
+.inline-block-span {
+    display: block;
+    margin: 0;
+}
+
+.page-title-container .title span {
+    font-size: 48px;
+    line-height: 42px;
+}
+
+.page-title-container .title .italicised-text {
+    color: #5D46EB;;
+}
+
+.page-title-container .callout {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+.page-title-container .callout span {
+    color: #0D2F2F;
+    font-size: 32px;
+    line-height: 30px;
+    font-weight: 400;
+}
+.page-title-container .muted-text{
+    color: #64748B;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 20px;
+}
