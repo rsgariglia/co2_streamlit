@@ -23,6 +23,10 @@ with open('Illustration-Transport-emissions-optimised.json', 'r') as f:
     transport = json.load(f)
 st_lottie(transport, width=200, height=200)
 
+with open('Illustration-Go-circular_new.json', 'r') as f:
+    circular = json.load(f)
+st_lottie(circular, width=200, height=200)
+
 def page_identify_ways_to_reduce_emissions():
     st.title("Identify Ways to Reduce Emissions")
     st.write("This page helps you identify ways to reduce emissions.")
