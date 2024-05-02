@@ -4,6 +4,8 @@ import numpy as np
 
 st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_state="expanded")
 
+st.markdown('<style> '+ open('./style.css').read()+' </style>', unsafe_allow_html=True)
+
 def page_a_deeper_look():
     st.title("A deeper look into your CO2 savings")
     st.write("Break down of your most emitting materials by location")

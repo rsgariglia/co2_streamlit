@@ -7,6 +7,7 @@ from google.oauth2 import service_account
 from google.cloud import bigquery
 
 
+
 # Set Streamlit theme to light
 st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_state="expanded")
 
@@ -20,6 +21,7 @@ client = bigquery.Client(credentials=credentials)
 #project_id = credentials["project_id"]
 project_id = st.secrets["gcp_service_account"]["project_id"]
 
+st.markdown('<style> '+ open('./style.css').read()+' </style>', unsafe_allow_html=True)
 hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
@@ -31,10 +33,10 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 #specifying sidebar layout
 show_pages(
     [
-        Page("app.py", "Your estimated emissions"),
-        Page("pages/page_1.py", "Calculate your reduction potential"),
-        Page("pages/page_2.py", "Identify ways to reduce emissions"),
-        Page("pages/page_3.py", "Detailed CO2 report")
+        Page("app.py", "Your estimated emissions", icon='⭕'),
+        Page("pages/page_1.py", "Calculate your reduction potential", icon='⭕'),
+        Page("pages/page_2.py", "Identify ways to reduce emissions", icon='⭕'),
+        Page("pages/page_3.py", "Detailed CO2 report", icon='⭕')
     ]
 )
 
