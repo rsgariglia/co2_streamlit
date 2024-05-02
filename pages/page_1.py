@@ -12,19 +12,11 @@ st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_st
 
 # Define BigQuery credentials
 #credentials = st.secrets["gcp_service_account"]
-#project_id = credentials["project_id"]
-
-
-
-
-# Define BigQuery credentials
-#credentials = st.secrets["gcp_service_account"]
 credentials = service_account.Credentials.from_service_account_info(
     st.secrets["gcp_service_account"]
 )
 
 client = bigquery.Client(credentials=credentials)
-#project_id = credentials["project_id"]
 project_id = st.secrets["gcp_service_account"]["project_id"]
 
 st.markdown('<style> '+ open('./style.css').read()+' </style>', unsafe_allow_html=True)
