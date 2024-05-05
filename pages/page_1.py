@@ -264,26 +264,29 @@ def page_calculate_emission_potential():
         
         st.write(" ")
         
-        
-        col1, col2 = st.columns(2)
+        if avg_co2_savings > 0 or avg_cost_savings > 0:
+            st.write(" ")
+            col1, col2 = st.columns(2)
 
 
-        with col1:
-            st.markdown(
-                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                f"<h3><strong>{avg_co2_savings:,.0f}</strong></h3>"
-                 "<p><strong>Projected monthly CO2 kg savings</strong></p>"
-                "<p>By recycling this material relative to incineration with energy recovery</p>"
-                "</div>", unsafe_allow_html=True)
+            with col1:
+                st.markdown(
+                    "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
+                    f"<h3><strong>{avg_co2_savings:,.0f}</strong></h3>"
+                    "<p><strong>Projected monthly CO2 kg savings</strong></p>"
+                    "<p>By recycling this material relative to incineration with energy recovery</p>"
+                    "</div>", unsafe_allow_html=True)
 
-        with col2:
-            st.markdown(
-                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                f"<h3><strong>{avg_cost_savings:,.0f} €</strong></h3>"
-                "<p><strong>Projected monthly cost savings</strong></p>"
-                 "<p>By recycling this material</p>"
-                "</div>", unsafe_allow_html=True)
+            with col2:
+                st.markdown(
+                    "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
+                    f"<h3><strong>{avg_cost_savings:,.0f} €</strong></h3>"
+                    "<p><strong>Projected monthly cost savings</strong></p>"
+                    "<p>By recycling this material</p>"
+                    "</div>", unsafe_allow_html=True)
 
+            
+            st.write(" ")
         
         st.write(" ")
 
