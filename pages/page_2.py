@@ -71,11 +71,13 @@ def page_identify_ways_to_reduce_emissions():
             )
         with col2:
             st.markdown(
-                        "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                        "<h3>Box 2.1</h3>"
-                        "<p>The Lottie icon will have to go here</p>"
-                        "</div>",
-                        unsafe_allow_html=True)
+                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
+                "<h3>Analyse your product for CO2 saving potential</h3>"
+                "<p>A lifecycle analysis can help evaluate your material streams and their emissions. Whether you can save emissions through take-back depends on many factors like weight and transport. Our circularity team can calculate the business case for you.</p>"
+                "</div>",
+                unsafe_allow_html=True
+            )
+
 
         st.write("")
        
@@ -106,10 +108,13 @@ def page_identify_ways_to_reduce_emissions():
 
 
         with col2:
-            st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                        "<h3>Box 2.2</h3>"
-                        "<p>Content for Box 2.3</p>"
-                        "</div>", unsafe_allow_html=True)
+            st.markdown(
+                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
+                "<h3>Your recycler can influence transport emissions</h3>"
+                "<p>There are recyclers with climate-neutral transportation. Call your recycler to learn more about their stance on emissions. Independently of your recycler, you can compensate for the transport emissions your waste is causing.</p>"
+                "</div>",
+                unsafe_allow_html=True
+            )
         st.write("")
 
     with tab3:
@@ -152,10 +157,14 @@ def page_identify_ways_to_reduce_emissions():
                 "</div>", unsafe_allow_html=True)
             
         with col3:
-            st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px; width: 100%;'>"
-                        "<h3>Box 2.3</h3>"
-                        "<p>Content for Box 2.3</p>"
-                        "</div>", unsafe_allow_html=True)
+            st.markdown(
+                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px; width: 100%;'>"
+                "<h3>Bales and presses can optimise pickups and costs</h3>"
+                "<p>On average compressing waste can <a href='https://toel.ch/produkt/presscontainer-welaki/' target='_blank'>reduce waste volume by 4-6 times</a> and thereby avoid pick-ups and emissions. At a large enough quantity, compressing your own bales can get you better conditions with your recyclers.</p>"
+                "</div>",
+                unsafe_allow_html=True
+            )
+
             
         
         
@@ -187,8 +196,8 @@ def page_identify_ways_to_reduce_emissions():
                         "</div>", unsafe_allow_html=True)
         with col2:
             st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                        "<h3>Box 2.4</h3>"
-                        "<p>Content for Box 2.4</p>"
+                        "<h3>Avoid incineration through sorting</h3>"
+                        "<p>On average there is <a href='https://www.umweltbundesamt.de/daten/private-haushalte-konsum/wohnen/abfaelle-privater-haushalte#lebensmittelverschwendung-und-abfalle-stoppen' target='_blank'>27.6% of valuables in residual waste</a>. Better sorting can save you costs and emissions by recycling more and incinerating less. The majority of our customers run regular waste trainings for their employees and discuss wrongly sorted waste.</p>"
                         "</div>", unsafe_allow_html=True)
         st.write("")
 
@@ -196,3 +205,5 @@ page_identify_ways_to_reduce_emissions()
 
 if st.button("Next", key="next_button"):
     st.switch_page("pages/page_3.py")
+
+
