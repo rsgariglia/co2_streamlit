@@ -86,8 +86,8 @@ def page_your_estimated_emissions():
 
     # Plot bar chart of emissions generated using Altair
     chart = alt.Chart(emissions_data_first_7).mark_bar().encode(
-        x=alt.X('material:N', sort=None, axis=alt.Axis(labelAngle=45)),  # Disabling sorting and tilting labels
-        y='emissions_generated:Q',
+        x=alt.X('material:N', sort=None, axis=alt.Axis(labelAngle=45)),
+        y = alt.Y('emissions_generated:Q', title='Emissions generated'),
         color=alt.value('#5D46EB')
     ).properties(
         width=600,
@@ -101,3 +101,6 @@ page_your_estimated_emissions()
 # Add navigation buttons at the bottom right
 if st.button("Continue", key="next_button", type="primary"):
     st.switch_page("pages/page_1.py")
+    
+
+y = alt.Y('forecast:Q', title='CO2 kgs generated forecast')
