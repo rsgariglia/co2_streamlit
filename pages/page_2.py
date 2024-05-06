@@ -178,3 +178,10 @@ page_identify_ways_to_reduce_emissions()
 
 if st.button("Next", key="next_button"):
     st.switch_page("pages/page_3.py")
+
+
+transparent_footer = """
+                    <div class="transparent-footer-spacing"></div>
+                """
+
+st.markdown(transparent_footer, unsafe_allow_html=True)

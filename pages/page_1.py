@@ -107,22 +107,39 @@ forecasts_data = run_query_forecast_data()
 
 
 def page_calculate_emission_potential():
-    st.title("Calculate Your Emission Potential")
-    st.subheader("Reduce emissions by sorting waste")
+    pageTopStartTxt = """
+                    <div class="page-title-container page1-page-container-top">
+                        <div class="header-text">
+                            <span class="inline-block-span">Calculate your <i class="purple-color-text">C02 reduction potential</i></span>
+                        </div>
+                        <div class="sub-header-text">
+                            <span class="inline-block-span">Reduce emissions by sorting waste</span>
+                        </div>
+                    <div>
+                """
+    #st.title("Calculate Your Emission Potential")
+    #st.subheader("Reduce emissions by sorting waste")
 
-    st.write(" ")
-    
+    st.markdown(pageTopStartTxt, unsafe_allow_html=True)
+
     material_options = material_emissions_data["mapped_BE_material"].unique().tolist()
-    selected_material = st.selectbox("Pick a material", material_options)
+    selected_material = st.selectbox("Pick a recyclable material", material_options)
 
-    st.write(" ")
+    #st.write(" ")
+    current_recycling_rate = """
+                    <div class="current-recycling-quota">
+                        <span class="inline-block-span">So much of this material you are already recycling</span>
+                        <span class="recycling-rate">25 %</span>
+                    </div>
+                """
 
-    waste_reduction_percentage = st.slider("Pick a % of waste you want to reduce", min_value=10, max_value=100, format="%d%%", value=15)
+    st.markdown(current_recycling_rate, unsafe_allow_html=True)
+    waste_reduction_percentage = st.slider("Ideal percentage you want to recycle", min_value=10, max_value=100, format="%d%%", value=25)
 
 
-    st.write(" ")
+    #st.write(" ")
 
-    if st.button("Calculate CO2 reduction potential", key="calculate_button"):
+    if st.button("Calculate CO2 reduction potential", key="calculate_button", type="primary"):
         # Filter data for selected material
         filtered_data = material_emissions_data[material_emissions_data["mapped_BE_material"] == selected_material]
         
@@ -270,19 +287,27 @@ def page_calculate_emission_potential():
 
         with col1:
             st.markdown(
-                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                f"<h3><strong>{avg_co2_savings:,.0f}</strong></h3>"
-                 "<p><strong>Projected monthly CO2 kg savings</strong></p>"
-                "<p>By recycling this material relative to incineration with energy recovery</p>"
-                "</div>", unsafe_allow_html=True)
+                f"""<div class="co2-summary-box">
+                        <div class="header">
+                            {avg_co2_savings:,.0f} t
+                        </div>
+                        <p class="sub-header-text">
+                            Projected CO2 reductions per month
+                        </p>
+                    </div>
+                """, unsafe_allow_html=True)
 
         with col2:
             st.markdown(
-                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                f"<h3><strong>{avg_cost_savings:,.0f} €</strong></h3>"
-                "<p><strong>Projected monthly cost savings</strong></p>"
-                 "<p>By recycling this material</p>"
-                "</div>", unsafe_allow_html=True)
+                f"""<div class="co2-summary-box">
+                        <div class="header">
+                            {avg_cost_savings:,.0f} €
+                        </div>
+                        <p class="sub-header-text">
+                            Cost impact of waste reduction
+                        </p>
+                    </div>
+                """, unsafe_allow_html=True)
 
         
         st.write(" ")
@@ -290,5 +315,7 @@ def page_calculate_emission_potential():
 
 page_calculate_emission_potential()
 
-if st.button("Next", key="next_button"):
+st.markdown("")
+
+if st.button("Ok, so how do I get there?", key="next_button", type="primary"):
     st.switch_page("pages/page_2.py")
