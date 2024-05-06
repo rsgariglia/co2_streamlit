@@ -28,6 +28,18 @@ with open('Illustration-Go-circular_new.json', 'r') as f:
     circular = json.load(f)
 st_lottie(circular, width=200, height=200)
 
+icon_gc = st.image("GoCircular-Icon1.svg", width=30)
+icon_transport_1 = st.image("OptimiseTransport-Icon1.svg", width=30)
+icon_transport_2 = st.image("OptimiseTransport-Icon2.svg", width=30)
+reduce_pickups_1 = st.image("ReducePickups-Icon1.svg", width=30)
+reduce_pickups_2 = st.image("ReducePickups-Icon2.svg", width=30)
+reduce_pickups_3 = st.image("ReducePickups-Icon3.svg", width=30)
+reduce_pickups_4 = st.image("ReducePickups-Icon4.svg", width=30)
+reduce_pickups_5 = st.image("ReducePickups-Icon5.svg", width=30)
+reduce_pickups_6 = st.image("ReducePickups-Icon6.svg", width=30)
+sorting_1 = st.image("AvoidIncineration-Icon1.svg", width=30)
+sorting_2 = st.image("AvoidIncineration-Icon2.svg", width=30)
+
 def page_identify_ways_to_reduce_emissions():
     st.title("Identify Ways to Reduce Emissions")
     st.write("This page helps you identify ways to reduce emissions.")
@@ -40,17 +52,23 @@ def page_identify_ways_to_reduce_emissions():
         st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
                     "<h3>Take back your materials</h3>"
                     "<p>You are managing <b>0</b> circular waste streams in Resourcify</p>"
-                    "<a href='https://www.google.com' target='_blank'><button>Explore takeback opportunities</button></a>"
+                    "<a href='https://circularity.demo.enterprise.resourcify.de/circular-future' target='_blank'><button>Explore takeback opportunities</button></a>"
                     "</div>", unsafe_allow_html=True)
         st.write("")
         
         col1, col2 = st.columns(2)
         
         with col1:
-            st.markdown("<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                        "<h3>123,456 t of CO2 saved</h3>"
-                        "<p>through take-back by other Resourcify customers</p>"
-                        "</div>", unsafe_allow_html=True)
+            st.markdown(
+                "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px; display: flex; align-items: center;'>"
+                f"<img src='{icon_gc}' style='width: 30px; height: 30px; margin-right: 10px;'>"
+                "<div>"
+                "<h3><strong>100,5 t of CO2 saved</strong></h3>"
+                "<p>through take-back by other Resourcify customers</p>"
+                "</div>"
+                "</div>", 
+                unsafe_allow_html=True
+            )
         with col2:
             st.markdown(
                         "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
