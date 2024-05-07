@@ -117,8 +117,6 @@ def page_calculate_emission_potential():
                         </div>
                     <div>
                 """
-    #st.title("Calculate Your Emission Potential")
-    #st.subheader("Reduce emissions by sorting waste")
 
     st.markdown(pageTopStartTxt, unsafe_allow_html=True)
 
@@ -326,3 +324,8 @@ st.markdown("")
 
 if st.button("Ok, so how do I get there?", key="next_button", type="primary"):
     st.switch_page("pages/page_2.py")
+
+transparent_footer = """
+                    <div class="transparent-footer-spacing"></div>
+                """
+st.markdown(transparent_footer, unsafe_allow_html=True)
