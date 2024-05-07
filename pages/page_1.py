@@ -288,29 +288,29 @@ def page_calculate_emission_potential():
             col1, col2 = st.columns(2)
 
 
-        with col1:
-            st.markdown(
-                f"""<div class="co2-summary-box">
-                        <div class="header">
-                            {avg_co2_savings:,.0f} kg
+            with col1:
+                st.markdown(
+                    f"""<div class="co2-summary-box">
+                            <div class="header">
+                                {avg_co2_savings:,.0f} kg
+                            </div>
+                            <p class="sub-header-text">
+                                Projected monthly CO2 savings by recycling this material relative to incineration with energy recovery
+                            </p>
                         </div>
-                        <p class="sub-header-text">
-                            Projected monthly CO2 savings by recycling this material relative to incineration with energy recovery
-                        </p>
-                    </div>
-                """, unsafe_allow_html=True)
+                    """, unsafe_allow_html=True)
 
-        with col2:
-            st.markdown(
-                f"""<div class="co2-summary-box">
-                        <div class="header">
-                            {avg_cost_savings:,.0f} €
-                        </div>
-                        <p class="sub-header-text">
-                            Projected monthly cost saving by recycling this material
-                        </p>
-                    </div>
-                """, unsafe_allow_html=True)
+                with col2:
+                    st.markdown(
+                        f"""<div class="co2-summary-box">
+                                <div class="header">
+                                    {avg_cost_savings:,.0f} €
+                                </div>
+                                <p class="sub-header-text">
+                                    Projected monthly cost saving by recycling this material
+                                </p>
+                            </div>
+                        """, unsafe_allow_html=True)
 
         
         st.write(" ")
