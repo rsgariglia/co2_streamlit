@@ -128,18 +128,18 @@ def page_calculate_emission_potential():
     #st.write(" ")
     current_recycling_rate = """
                     <div class="current-recycling-quota">
-                        <span class="inline-block-span">So much of this material you are already recycling</span>
+                        <span class="inline-block-span">How much do you think you can reduce this material being discared?</span>
                         <span class="recycling-rate">25 %</span>
                     </div>
                 """
 
-    st.markdown(current_recycling_rate, unsafe_allow_html=True)
-    waste_reduction_percentage = st.slider("Ideal percentage you want to recycle", min_value=10, max_value=100, format="%d%%", value=25)
+    #st.markdown(current_recycling_rate, unsafe_allow_html=True)
+    waste_reduction_percentage = st.slider("How much do you think you can reduce this material being discared?", min_value=10, max_value=100, format="%d%%", value=25)
 
 
     #st.write(" ")
 
-    if st.button("Calculate CO2 reduction potential", key="calculate_button", type="primary"):
+    if st.button("Calculate my reduction potential", key="calculate_button"):
         # Filter data for selected material
         filtered_data = material_emissions_data[material_emissions_data["mapped_BE_material"] == selected_material]
         
@@ -272,14 +272,22 @@ def page_calculate_emission_potential():
        
         # Display additional information
         st.markdown(
-            f"<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px; text-align: center;'>"
-            f"<p>By reducing your <strong>{selected_material}</strong> waste by <strong>{waste_reduction_percentage}%</strong>, your emissions are projected to decrease by <strong>{-average_percentage_decrease:.2f}%</strong> on average</p>"
-            "</div>",
+            f"""
+                <div class="co2-summary-box saved-emission-summary-box">
+                    <div class="header">
+                            {-average_percentage_decrease:.2f}%
+                    </div>
+                    <div class="sub-header-text">
+                        Projected decrease of emissions through reducing {selected_material} by {waste_reduction_percentage}%
+                    </div>   
+                </div>
+            """,
             unsafe_allow_html=True
         )
 
         
         st.write(" ")
+        st.markdown("")
         
         
         col1, col2 = st.columns(2)
@@ -289,10 +297,10 @@ def page_calculate_emission_potential():
             st.markdown(
                 f"""<div class="co2-summary-box">
                         <div class="header">
-                            {avg_co2_savings:,.0f} t
+                            {avg_co2_savings:,.0f} kg
                         </div>
                         <p class="sub-header-text">
-                            Projected CO2 reductions per month
+                            Projected monthly CO2 savings by recycling this material relative to incineration with energy recovery
                         </p>
                     </div>
                 """, unsafe_allow_html=True)
@@ -304,7 +312,7 @@ def page_calculate_emission_potential():
                             {avg_cost_savings:,.0f} €
                         </div>
                         <p class="sub-header-text">
-                            Cost impact of waste reduction
+                            Projected monthly cost saving by recycling this material
                         </p>
                     </div>
                 """, unsafe_allow_html=True)
