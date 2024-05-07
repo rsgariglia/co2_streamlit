@@ -66,7 +66,7 @@ def page_identify_ways_to_reduce_emissions():
                 "<h3><strong>100,5 t of CO2 saved</strong></h3>"
                 "<p>through take-back by other Resourcify customers</p>"
                 "</div>"
-                "</div>", 
+                "</div>",
                 unsafe_allow_html=True
             )
         with col2:
@@ -207,3 +207,8 @@ if st.button("Next", key="next_button"):
     st.switch_page("pages/page_3.py")
 
 
+transparent_footer = """
+                    <div class="transparent-footer-spacing"></div>
+                """
+
+st.markdown(transparent_footer, unsafe_allow_html=True)

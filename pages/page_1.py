@@ -107,22 +107,33 @@ forecasts_data = run_query_forecast_data()
 
 
 def page_calculate_emission_potential():
-    st.title("Calculate Your Emission Potential")
-    st.subheader("Reduce emissions by sorting waste")
+    pageTopStartTxt = """
+                    <div class="page-title-container page1-page-container-top">
+                        <div class="header-text">
+                            <span class="inline-block-span">Calculate your <i class="purple-color-text">C02 reduction potential</i></span>
+                        </div>
+                        <div class="sub-header-text">
+                            <span class="inline-block-span">Reduce emissions by sorting waste</span>
+                        </div>
+                    <div>
+                """
+    #st.title("Calculate Your Emission Potential")
+    #st.subheader("Reduce emissions by sorting waste")
 
-    st.write(" ")
-    
+    st.markdown(pageTopStartTxt, unsafe_allow_html=True)
+
     material_options = material_emissions_data["mapped_BE_material"].unique().tolist()
-    selected_material = st.selectbox("Pick a material", material_options)
+    selected_material = st.selectbox("Pick a recyclable material", material_options)
 
     st.write(" ")
 
-    waste_reduction_percentage = st.slider("Pick a % of waste you want to reduce", min_value=10, max_value=100, format="%d%%", value=15)
+    #st.markdown(current_recycling_rate, unsafe_allow_html=True)
+    waste_reduction_percentage = st.slider("How much do you think you can reduce this material being discared?", min_value=10, max_value=100, format="%d%%", value=25)
 
 
-    st.write(" ")
+    #st.write(" ")
 
-    if st.button("Calculate CO2 reduction potential", key="calculate_button"):
+    if st.button("Calculate my reduction potential", key="calculate_button"):
         # Filter data for selected material
         filtered_data = material_emissions_data[material_emissions_data["mapped_BE_material"] == selected_material]
         
@@ -255,15 +266,23 @@ def page_calculate_emission_potential():
        
         # Display additional information
         st.markdown(
-            f"<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px; text-align: center;'>"
-            f"<p>By reducing your <strong>{selected_material}</strong> waste by <strong>{waste_reduction_percentage}%</strong>, your emissions are projected to decrease by <strong>{-average_percentage_decrease:.2f}%</strong> on average</p>"
-            "</div>",
+            f"""
+                <div class="co2-summary-box saved-emission-summary-box">
+                    <div class="header">
+                            {-average_percentage_decrease:.2f}%
+                    </div>
+                    <div class="sub-header-text">
+                        Projected decrease of emissions through reducing {selected_material} by {waste_reduction_percentage}%
+                    </div>
+                </div>
+            """,
             unsafe_allow_html=True
         )
 
         
         st.write(" ")
-        
+        st.markdown("")
+
         if avg_co2_savings > 0 or avg_cost_savings > 0:
             st.write(" ")
             col1, col2 = st.columns(2)
@@ -271,27 +290,35 @@ def page_calculate_emission_potential():
 
             with col1:
                 st.markdown(
-                    "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                    f"<h3><strong>{avg_co2_savings:,.0f}</strong></h3>"
-                    "<p><strong>Projected monthly CO2 kg savings</strong></p>"
-                    "<p>By recycling this material relative to incineration with energy recovery</p>"
-                    "</div>", unsafe_allow_html=True)
+                    f"""<div class="co2-summary-box">
+                            <div class="header">
+                                {avg_co2_savings:,.0f} kg
+                            </div>
+                            <p class="sub-header-text">
+                                Projected monthly CO2 savings by recycling this material relative to incineration with energy recovery
+                            </p>
+                        </div>
+                    """, unsafe_allow_html=True)
 
-            with col2:
-                st.markdown(
-                    "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px;'>"
-                    f"<h3><strong>{avg_cost_savings:,.0f} €</strong></h3>"
-                    "<p><strong>Projected monthly cost savings</strong></p>"
-                    "<p>By recycling this material</p>"
-                    "</div>", unsafe_allow_html=True)
+                with col2:
+                    st.markdown(
+                        f"""<div class="co2-summary-box">
+                                <div class="header">
+                                    {avg_cost_savings:,.0f} €
+                                </div>
+                                <p class="sub-header-text">
+                                    Projected monthly cost saving by recycling this material
+                                </p>
+                            </div>
+                        """, unsafe_allow_html=True)
 
-            
-            st.write(" ")
         
         st.write(" ")
 
 
 page_calculate_emission_potential()
 
-if st.button("Next", key="next_button"):
+st.markdown("")
+
+if st.button("Ok, so how do I get there?", key="next_button", type="primary"):
     st.switch_page("pages/page_2.py")

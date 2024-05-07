@@ -60,8 +60,8 @@ def page_your_estimated_emissions():
     pageTitleText = """
             <div class="page-title-container">
                 <div class="title">
-                    <span class="inline-block-span">Learn how to <i class="italicised-text">reduce your</i></span>
-                    <span class="inline-block-span"><i class="italicised-text">C0<sub>2</sub> emissions</i></span>
+                    <span class="inline-block-span">Learn how to <i class="purple-color-textt">reduce your</i></span>
+                    <span class="inline-block-span"><i class="purple-color-text">C0<sub>2</sub> emissions</i></span>
                 </div>
                 <div class="callout">
                     <span class="inline-block-span">Status quo: Your estimated C02</span> 
