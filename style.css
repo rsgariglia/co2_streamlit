@@ -140,8 +140,9 @@
 
 .co2-summary-box {
     border: 1px solid #CBD5E1;
-    padding: 10px;
+    padding: 15px;
     border-radius: 10px;
+    min-height: 129px !important;
 }
 
 .co2-summary-box .header {
@@ -151,4 +152,12 @@
     line-height: 36px;
     color: #1E293B;
     padding-bottom: 5px;
+}
+
+.saved-emission-summary-box {
+    min-height: auto !important;
+}
+
+div[data-testid="stTickBar"] {
+    visibility: hidden !important;
 }
