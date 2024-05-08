@@ -33,10 +33,10 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 #specifying sidebar layout
 show_pages(
     [
-        Page("app.py", "Your estimated emissions", icon='⭕'),
-        Page("pages/page_1.py", "Calculate your reduction potential", icon='⭕'),
-        Page("pages/page_2.py", "Identify ways to reduce emissions", icon='⭕'),
-        Page("pages/page_3.py", "Detailed CO2 report", icon='⭕')
+        Page("app.py", "Your estimated emissions"),
+        Page("pages/page_1.py", "Calculate your reduction potential"),
+        Page("pages/page_2.py", "Identify ways to reduce emissions"),
+        Page("pages/page_3.py", "Detailed CO2 report")
     ]
 )
 
@@ -60,7 +60,7 @@ def page_your_estimated_emissions():
     pageTitleText = """
             <div class="page-title-container">
                 <div class="title">
-                    <span class="inline-block-span">Learn how to <i class="purple-color-textt">reduce your</i></span>
+                    <span class="inline-block-span">Learn how to <i class="purple-color-text">reduce your</i></span>
                     <span class="inline-block-span"><i class="purple-color-text">C0<sub>2</sub> emissions</i></span>
                 </div>
                 <div class="callout">
@@ -101,6 +101,11 @@ page_your_estimated_emissions()
 # Add navigation buttons at the bottom right
 if st.button("Continue", key="next_button", type="primary"):
     st.switch_page("pages/page_1.py")
+
+transparent_footer = """
+                    <div class="transparent-footer-spacing"></div>
+                """
+st.markdown(transparent_footer, unsafe_allow_html=True)
     
 
 y = alt.Y('forecast:Q', title='CO2 kgs generated forecast')

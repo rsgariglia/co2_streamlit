@@ -7,8 +7,19 @@ st.set_page_config(layout="wide", page_title="Emissions App", initial_sidebar_st
 st.markdown('<style> '+ open('./style.css').read()+' </style>', unsafe_allow_html=True)
 
 def page_a_deeper_look():
-    st.title("A deeper look into your CO2 savings")
-    st.write("Break down of your most emitting materials by location")
+    pageTopStartTxt = """
+                    <div class="page-title-container page1-page-container-top">
+                        <div class="header-text">
+                            <span class="inline-block-span">A deeper look into <i class="purple-color-text">your CO2 savings</i></span>
+                        </div>
+                        <div class="sub-header-text">
+                            <span class="inline-block-span">Break down of your most emitting materials by location</span>
+                        </div>
+                    <div>
+                """
+    st.markdown(pageTopStartTxt, unsafe_allow_html=True)
+    st.title("")
+    st.write("")
 
     st.write("")
     
@@ -161,3 +172,8 @@ page_a_deeper_look()
 if st.button("Back", key="next_button"):
     st.switch_page("app.py")
 
+
+transparent_footer = """
+                    <div class="transparent-footer-spacing"></div>
+                """
+st.markdown(transparent_footer, unsafe_allow_html=True)
