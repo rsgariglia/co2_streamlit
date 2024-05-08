@@ -77,7 +77,7 @@ def page_identify_ways_to_reduce_emissions():
                     <div class="multi-item-callout illustration-container">
                         <div class="item tab-mini-callout">
                             <div class="illustration">
-                                <img src="app/static/illustration-Go-circular.gif" alt="Go Circular" />
+                                <img src="app/static/Illustration-Go-circular.gif" alt="Go Circular" />
                             </div>
                         </div>
                         <div class="item tab-mini-callout">
