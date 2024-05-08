@@ -56,7 +56,7 @@ def page_identify_ways_to_reduce_emissions():
                         </div>
                         <div class="text-wrapper">
                             <div class="header">
-                                123,456 t
+                                100.5 t
                             </div>
                             <div class="text">
                                 <span class="inline-block-span">
@@ -153,7 +153,7 @@ def page_identify_ways_to_reduce_emissions():
                             </div>
                             <div class="text-wrapper">
                                 <div class="header">
-                                    34,7 km
+                                    34.7 km
                                 </div>
                                 <div class="text">
                                     <span class="inline-block-span">
@@ -238,7 +238,7 @@ def page_identify_ways_to_reduce_emissions():
                             </div>
                             <div class="text-wrapper">
                                 <div class="header">
-                                    10.205
+                                    10,205
                                 </div>
                                 <div class="text">
                                     <span class="inline-block-span">
@@ -484,7 +484,7 @@ def page_identify_ways_to_reduce_emissions():
                                 </div>
                                 <div class="text">
                                     <span class="inline-block-span">
-                                        On average there is 27,6% of valuables in residual waste.
+                                        On average there is 27.6% of valuables in residual waste.
                                     </span>
                                     <span class="inline-block-span">
                                         Better sorting can save you costs and emissions by recycling more and incinerating less.
