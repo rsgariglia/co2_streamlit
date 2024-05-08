@@ -47,7 +47,7 @@ def run_query():
     # Define the query
     query = """
     SELECT material, emissions_generated
-    FROM `analytics-data-platform-395911.streamlit_app_IFAT.emissions_generated`
+    FROM `analytics-data-platform-395911.streamlit_app_IFAT.emissions_generated_new`
     """
     # Read data directly into DataFrame
     return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
@@ -87,7 +87,7 @@ def page_your_estimated_emissions():
     # Plot bar chart of emissions generated using Altair
     chart = alt.Chart(emissions_data_first_7).mark_bar().encode(
         x=alt.X('material:N', sort=None, axis=alt.Axis(labelAngle=45)),
-        y = alt.Y('emissions_generated:Q', title='Emissions generated'),
+        y = alt.Y('emissions_generated:Q', title='Emissions generated (kgs)'),
         color=alt.value('#5D46EB')
     ).properties(
         width=600,

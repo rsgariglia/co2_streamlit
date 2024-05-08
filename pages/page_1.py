@@ -26,7 +26,7 @@ def run_query_forecast():
     # Define the query
     query = """
     SELECT mapped_BE_material, month_year, total_waste_volume_tonnes, saved_emissions_factor, average_cost_material, average_revenue_material
-    FROM `analytics-data-platform-395911.streamlit_app_IFAT.savings_forecast_cost`
+    FROM `analytics-data-platform-395911.streamlit_app_IFAT.savings_forecast_cost_final`
     """
     # Read data directly into DataFrame
     return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
@@ -82,7 +82,7 @@ def run_query():
     # Define the query
     query = """
     SELECT *
-    FROM `analytics-data-platform-395911.streamlit_app_IFAT.total_emissions_to_date_new`
+    FROM `analytics-data-platform-395911.streamlit_app_IFAT.total_emissions_to_date_final`
     """
     # Read data directly into DataFrame
     return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
@@ -96,7 +96,7 @@ def run_query_forecast_data():
     # Define the query
     query = """
     SELECT material, month_year, forecast
-    FROM `analytics-data-platform-395911.streamlit_app_IFAT.forecasts_new`
+    FROM `analytics-data-platform-395911.streamlit_app_IFAT.forecasts_final`
     """
     # Read data directly into DataFrame
     return pandas_gbq.read_gbq(query, project_id = project_id, credentials=credentials)
@@ -123,6 +123,11 @@ def page_calculate_emission_potential():
     st.markdown(pageTopStartTxt, unsafe_allow_html=True)
 
     material_options = material_emissions_data["mapped_BE_material"].unique().tolist()
+    
+    if "CONSTRUCTION_DEBRIS" in material_options:
+        material_options.remove("CONSTRUCTION_DEBRIS")
+        material_options.append("CONSTRUCTION_DEBRIS")
+
     selected_material = st.selectbox("Pick a recyclable material", material_options)
 
     st.write(" ")
@@ -134,23 +139,22 @@ def page_calculate_emission_potential():
     #st.write(" ")
 
     if st.button("Calculate my reduction potential", key="calculate_button"):
-        # Filter data for selected material
+       
         filtered_data = material_emissions_data[material_emissions_data["mapped_BE_material"] == selected_material]
         
-        # Convert month_year to datetime and sort by it
+        
         filtered_data['month_year'] = pd.to_datetime(filtered_data['month_year'])
         filtered_data = filtered_data.sort_values(by='month_year')
         
         min_emissions = filtered_data['total_emissions'].min()
         max_emissions = filtered_data['total_emissions'].max()
         
-        #specific override for some materials
-        if selected_material in ('BAUSCHUTT','CONSTRUCTION'):
+        if selected_material in ('CONSTRUCTION_DEBRIS','CONSTRUCTION'):
             min_emissions = 0
         elif selected_material == 'METAL':
             min_emissions = 500
 
-        # Plot area chart of total emissions by month_year using st.area_chart
+       
         emissions_chart = alt.Chart(filtered_data).mark_area().encode(
             x=alt.X('month_year:T', axis=alt.Axis(labelAngle=45, format='%m/%Y', title=None)),  # Tilt x-axis labels by 45 degrees and remove label
             y=alt.Y('total_emissions:Q', title='CO2 kgs emitted', scale=alt.Scale(domain=[min_emissions, max_emissions])),  # Add y-axis label
@@ -161,10 +165,10 @@ def page_calculate_emission_potential():
             height=300  # Adjust height
         )
 
-        # Filter forecast data for selected material
+        
         filtered_forecast_data = forecasts_data[forecasts_data["material"] == selected_material]
 
-        # Convert month_year to datetime and sort by it
+        
         filtered_forecast_data['month_year'] = pd.to_datetime(filtered_forecast_data['month_year'])
         filtered_forecast_data = filtered_forecast_data.sort_values(by='month_year')
           
@@ -173,10 +177,10 @@ def page_calculate_emission_potential():
         adjusted_forecast_data['forecast'] *= (1 - reduction_percentage)
         
         
-                # Rename the 'forecast' column in adjusted_forecast_data to 'adjusted_forecast'
+         
         adjusted_forecast_data.rename(columns={'forecast': 'adjusted_forecast'}, inplace=True)
 
-        # Rename the 'forecast' column in original_forecast_data to 'original_forecast'
+    
         filtered_forecast_data.rename(columns={'forecast': 'status_quo_forecast'}, inplace=True)
 
         # Combine original and adjusted forecasts
@@ -191,7 +195,7 @@ def page_calculate_emission_potential():
         adjusted_data['type'] = 'Adjusted Forecast'
         combined_data = pd.concat([status_quo_data, adjusted_data])
         
-        # testing some new logic
+        
         
     
         # Filter forecast data for selected material

@@ -63,7 +63,7 @@ def page_identify_ways_to_reduce_emissions():
                 "<div style='border: 1px solid #D3D3D3; padding: 10px; border-radius: 5px; display: flex; align-items: center;'>"
                 f"<img src='{icon_gc}' style='width: 30px; height: 30px; margin-right: 10px;'>"
                 "<div>"
-                "<h3><strong>100,5 t of CO2 saved</strong></h3>"
+                "<h3><strong>100.5 t of CO2 saved</strong></h3>"
                 "<p>through take-back by other Resourcify customers</p>"
                 "</div>"
                 "</div>",
