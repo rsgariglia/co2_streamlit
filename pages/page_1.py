@@ -131,7 +131,7 @@ def page_calculate_emission_potential():
     st.write(" ")
 
     #st.markdown(current_recycling_rate, unsafe_allow_html=True)
-    waste_reduction_percentage = st.slider("How much do you think you can reduce waste for this material?", min_value=10, max_value=100, format="%d%%", value=25)
+    waste_reduction_percentage = st.slider("How much do you think you can potentially reduce this material being discarded?", min_value=10, max_value=100, format="%d%%", value=25)
 
 
     #st.write(" ")
