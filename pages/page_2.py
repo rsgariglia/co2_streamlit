@@ -403,10 +403,10 @@ def page_identify_ways_to_reduce_emissions():
         st.markdown(
                 """
                     <div class="tab-callout-container">
-                        <div class="title">0 of your recyclers have fed back transport emission data</div>
-                        <div class="text sub-header-text">Our best-guess estimate is that your CO2 emissions per pickup are 123,45 kg.</div>
+                        <div class="title">You are collecting 11 materials on average</div>
+                        <div class="text sub-header-text">On average Resourcify users have 27 materials. Depending on your available space, there might be room for more granular sorting.</div>
                         <a class="link-btn-primary" href='https://circularity.demo.enterprise.resourcify.de/circular-future' target='_blank'>
-                            Ask recyclers to fill in emissions data
+                            Order new container
                         </a>
                     </div>
                 """,
@@ -430,7 +430,7 @@ def page_identify_ways_to_reduce_emissions():
                             </div>
                             <div class="text-wrapper">
                                 <div class="header">
-                                    34% closer
+                                    34% 
                                 </div>
                                 <div class="text">
                                     <span class="inline-block-span">
